@@ -11,16 +11,11 @@ router.post("/admin/create", createAdmin);
 router.post("/subject/create", createSubject);
 router.post("/practical/create", createPractical);
 router.post("/enrollpractical/create", enrollInPractical);
-
 router.get("/user/get",isAdmin, getAllUsers);  
 router.get("/practical/get", getPracticals);  
 router.get("/subject/get", getSubjects);  
-
-
 router.get("/Admin/get", isAdmin, getAllAdmins);  
 router.get("/Teachers/get", isAdmin, getAllTeachers);  
-
-
 router.get("/Student/get", isAdmin, getAllStudents);  
 
 export default router;
