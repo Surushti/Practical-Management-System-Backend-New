@@ -8,7 +8,7 @@ export const createAdmin = async (req, res) => {
  
     const allowedRoles = ["Admin", "Teacher", "Student"];
     if (!allowedRoles.includes(role)) {
-      return res.status(400).json({
+      return res.json({
         error: "Invalid role. Allowed roles are: Admin, Teacher, Student.",
       });
     }
@@ -24,13 +24,13 @@ export const createAdmin = async (req, res) => {
   
     const savedUser = await user.save();
 
-    res.status(201).json({
+    res.json({
       savedUser,
       message: `${role} created successfully`,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({
+    res.json({
       error: "An error occurred while creating the user",
     });
   }
@@ -44,7 +44,7 @@ export const getAllUsers = async (req, res) => {
 
    
     if (!users.length) {
-      return res.status(404).json({
+      return res.json({
         message: "No users found",
       });
     }
@@ -56,14 +56,14 @@ export const getAllUsers = async (req, res) => {
     });
 
   
-    res.status(200).json({
+    res.json({
       users: usersWithoutPassword,
       message: "Users fetched successfully",
     });
   } catch (error) {
    
     console.error("Error fetching users:", error.message);
-    res.status(500).json({
+    res.json({
       error: "An error occurred while fetching users",
     });
   }
@@ -81,13 +81,13 @@ export const getAllAdmins = async (req, res) => {
       return userWithoutPassword;
     });
 
-    res.status(200).json({
+    res.json({
       admins: adminsWithoutPassword,
       message: "Admins fetched successfully",
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({
+    res.json({
       error: "An error occurred while fetching admins",
     });
   }
@@ -105,13 +105,13 @@ export const getAllTeachers = async (req, res) => {
       return userWithoutPassword;
     });
 
-    res.status(200).json({
+    res.json({
       teachers: teachersWithoutPassword,
       message: "Teachers fetched successfully",
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({
+    res.json({
       error: "An error occurred while fetching teachers",
     });
   }
@@ -130,13 +130,13 @@ export const getAllStudents = async (req, res) => {
       return userWithoutPassword;
     });
 
-    res.status(200).json({
+    res.json({
       students: studentsWithoutPassword,
       message: "Students fetched successfully",
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({
+    res.json({
       error: "An error occurred while fetching students",
     });
   }
